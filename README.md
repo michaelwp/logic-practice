@@ -4,6 +4,8 @@
 2. Binary Gap
 3. Flip Flop
 4. Linked List
+    - printLinkedList
+    - insertNodeAtPosition
 5. Number of Occurrences
 6. Number of Pair
 7. Palindrome

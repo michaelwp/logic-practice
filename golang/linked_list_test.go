@@ -70,3 +70,66 @@ func captureStdout(head *SinglyLinkedListNode) string {
 
 	return <-outChan
 }
+
+func Test_insertNodeAtPosition(t *testing.T) {
+	type args struct {
+		llist    *SinglyLinkedListNode
+		data     int32
+		position int32
+	}
+	tests := []struct {
+		name string
+		args args
+		want *SinglyLinkedListNode
+	}{
+		{
+			name: "insert node at position",
+			args: args{
+				llist: &SinglyLinkedListNode{
+					data: 11,
+					next: &SinglyLinkedListNode{
+						data: 9,
+						next: &SinglyLinkedListNode{
+							data: 19,
+							next: &SinglyLinkedListNode{
+								data: 10,
+								next: &SinglyLinkedListNode{
+									data: 4,
+									next: nil,
+								},
+							},
+						},
+					},
+				},
+				data:     20,
+				position: 3,
+			},
+			want: &SinglyLinkedListNode{
+				data: 11,
+				next: &SinglyLinkedListNode{
+					data: 9,
+					next: &SinglyLinkedListNode{
+						data: 19,
+						next: &SinglyLinkedListNode{
+							data: 20,
+							next: &SinglyLinkedListNode{
+								data: 10,
+								next: &SinglyLinkedListNode{
+									data: 4,
+									next: nil,
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := insertNodeAtPosition(tt.args.llist, tt.args.data, tt.args.position); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("insertNodeAtPosition() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
