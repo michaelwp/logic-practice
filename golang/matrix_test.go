@@ -53,6 +53,14 @@ func Test_spiralStep(t *testing.T) {
 				{10},
 				{9, 8, 7, 6},
 			},
+		},{
+			name: "spiral step test case 4 with nil value in parameter",
+			args: args{matrix: nil},
+			want: nil,
+		},{
+			name: "spiral step test case 5 with parameter length = 0",
+			args: args{matrix: [][]int32{}},
+			want: nil,
 		},
 	}
 	for _, tt := range tests {
