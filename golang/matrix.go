@@ -5,6 +5,10 @@ type coord struct {
 }
 
 func spiralStep(matrix [][]int32) [][]int32 {
+	if matrix == nil || len(matrix) <= 0 {
+		return nil
+	}
+
 	var res = [][]int32{}
 
 	var rLimit int32 = int32(len(matrix[0])) - 1
