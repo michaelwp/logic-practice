@@ -29,8 +29,8 @@ func Test_isAnagram(t *testing.T) {
 		},{
 			name: "test case 3",
 			args: args{
-				s1: "danger",
-				s2: "garden",
+				s1: "Danger",
+				s2: "Garden",
 			},
 			want: true,
 		},{
