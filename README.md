@@ -12,3 +12,5 @@
 8. Peak Element
 9. Matrix
    - Spiral step 
+10 Anagram
+   - isAnagram
