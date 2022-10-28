@@ -12,7 +12,7 @@
     - Insert Node At Position
 5. Number of Occurrences
 6. Palindrome
-7. Matrix
-   - Spiral Step
-10 Anagram
+7. Anagram
    - isAnagram
+8. Matrix
+   - Spiral Step
