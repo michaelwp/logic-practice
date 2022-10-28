@@ -13,6 +13,6 @@
 5. Number of Occurrences
 6. Palindrome
 7. Matrix
-   - Spiral step
+   - Spiral Step
 10 Anagram
    - isAnagram
