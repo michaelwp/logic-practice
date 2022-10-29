@@ -158,27 +158,137 @@ func Test_shiftNodePosition(t *testing.T) {
 						data: 3, next: &SinglyLinkedListNode{
 							data: 4, next: nil,
 						}}}},
-		},{
+		}, {
 			name: "test 3",
 			args: args{
 				head: &SinglyLinkedListNode{
 					data: 1, next: &SinglyLinkedListNode{
 						data: 2, next: &SinglyLinkedListNode{
 							data: 3, next: nil,
-							}}},
+						}}},
 				shift: 10000,
 			},
 			want: &SinglyLinkedListNode{
 				data: 3, next: &SinglyLinkedListNode{
 					data: 1, next: &SinglyLinkedListNode{
 						data: 2, next: nil,
-						}}},
+					}}},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := shiftNodePosition(tt.args.head, tt.args.shift); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("shiftNodePosition() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_deleteNode(t *testing.T) {
+	type args struct {
+		llist    *SinglyLinkedListNode
+		position int32
+	}
+	tests := []struct {
+		name string
+		args args
+		want *SinglyLinkedListNode
+	}{
+		{
+			name: "test1",
+			args: args{
+				llist:    nil,
+				position: 0,
+			},
+			want: nil,
+		}, {
+			name: "test2",
+			args: args{
+				llist: &SinglyLinkedListNode{
+					data: 0, next: &SinglyLinkedListNode{
+						data: 1, next: &SinglyLinkedListNode{
+							data: 2, next: &SinglyLinkedListNode{
+								data: 3, next: nil,
+							}}}},
+				position: -1,
+			},
+			want: &SinglyLinkedListNode{
+				data: 0, next: &SinglyLinkedListNode{
+					data: 1, next: &SinglyLinkedListNode{
+						data: 2, next: &SinglyLinkedListNode{
+							data: 3, next: nil,
+						}}}},
+		}, {
+			name: "test3",
+			args: args{
+				llist: &SinglyLinkedListNode{
+					data: 0, next: &SinglyLinkedListNode{
+						data: 1, next: &SinglyLinkedListNode{
+							data: 2, next: &SinglyLinkedListNode{
+								data: 3, next: nil,
+							}}}},
+				position: 5,
+			},
+			want: &SinglyLinkedListNode{
+				data: 0, next: &SinglyLinkedListNode{
+					data: 1, next: &SinglyLinkedListNode{
+						data: 2, next: &SinglyLinkedListNode{
+							data: 3, next: nil,
+						}}}},
+		}, {
+			name: "test4",
+			args: args{
+				llist: &SinglyLinkedListNode{
+					data: 0, next: &SinglyLinkedListNode{
+						data: 1, next: &SinglyLinkedListNode{
+							data: 2, next: &SinglyLinkedListNode{
+								data: 3, next: nil,
+							}}}},
+				position: 0,
+			},
+			want: &SinglyLinkedListNode{
+				data: 1, next: &SinglyLinkedListNode{
+					data: 2, next: &SinglyLinkedListNode{
+						data: 3, next: nil,
+					}}},
+		}, {
+			name: "test5",
+			args: args{
+				llist: &SinglyLinkedListNode{
+					data: 0, next: &SinglyLinkedListNode{
+						data: 1, next: &SinglyLinkedListNode{
+							data: 2, next: &SinglyLinkedListNode{
+								data: 3, next: nil,
+							}}}},
+				position: 3,
+			},
+			want: &SinglyLinkedListNode{
+				data: 0, next: &SinglyLinkedListNode{
+					data: 1, next: &SinglyLinkedListNode{
+						data: 2, next: nil,
+					}}},
+		}, {
+			name: "test6",
+			args: args{
+				llist: &SinglyLinkedListNode{
+					data: 0, next: &SinglyLinkedListNode{
+						data: 1, next: &SinglyLinkedListNode{
+							data: 3, next: &SinglyLinkedListNode{
+								data: 3, next: nil,
+							}}}},
+				position: 2,
+			},
+			want: &SinglyLinkedListNode{
+				data: 0, next: &SinglyLinkedListNode{
+					data: 1, next: &SinglyLinkedListNode{
+						data: 3, next: nil,
+					}}},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := deleteNode(tt.args.llist, tt.args.position); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("deleteNode() = %v, want %v", got, tt.want)
 			}
 		})
 	}
