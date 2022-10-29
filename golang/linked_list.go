@@ -104,3 +104,22 @@ func deleteNode(llist *SinglyLinkedListNode, position int32) *SinglyLinkedListNo
 
 	return llist
 }
+
+func reverseNode(llist *SinglyLinkedListNode) *SinglyLinkedListNode {
+	if llist == nil {
+		return nil
+	}
+
+	var curNode = llist
+	var prevNode *SinglyLinkedListNode
+
+	for curNode != nil {
+		tempNext := curNode.next
+		curNode.next = prevNode
+		prevNode = curNode
+		llist = curNode
+		curNode = tempNext
+	}
+
+	return llist
+}
