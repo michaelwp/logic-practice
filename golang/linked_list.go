@@ -76,3 +76,31 @@ func shiftNodePosition(head *SinglyLinkedListNode, shift int32) *SinglyLinkedLis
 
 	return head
 }
+
+func deleteNode(llist *SinglyLinkedListNode, position int32) *SinglyLinkedListNode {
+	if llist == nil {
+		return nil
+	}
+
+	if position < 0 {
+		return llist
+	}
+
+	if position == 0 {
+		return llist.next
+	}
+
+	head := llist
+	var currPos int32 = 1
+	for head != nil {
+		if currPos == position {
+			head.next = head.next.next
+			break
+		}
+
+		head = head.next
+		currPos++
+	}
+
+	return llist
+}
