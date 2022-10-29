@@ -22,18 +22,11 @@ func Test_printLinkedList(t *testing.T) {
 		{
 			name: "linked_list",
 			args: args{head: &SinglyLinkedListNode{
-				data: 1,
-				next: &SinglyLinkedListNode{
-					data: 2,
-					next: &SinglyLinkedListNode{
-						data: 3,
-						next: &SinglyLinkedListNode{
-							data: 4,
-							next: nil,
-						},
-					},
-				},
-			}},
+				data: 1, next: &SinglyLinkedListNode{
+					data: 2, next: &SinglyLinkedListNode{
+						data: 3, next: &SinglyLinkedListNode{
+							data: 4, next: nil,
+						}}}}},
 			expect: []string{"1", "2", "3", "4", ""},
 		},
 	}
@@ -86,49 +79,106 @@ func Test_insertNodeAtPosition(t *testing.T) {
 			name: "insert node at position",
 			args: args{
 				llist: &SinglyLinkedListNode{
-					data: 11,
-					next: &SinglyLinkedListNode{
-						data: 9,
-						next: &SinglyLinkedListNode{
-							data: 19,
-							next: &SinglyLinkedListNode{
-								data: 10,
-								next: &SinglyLinkedListNode{
-									data: 4,
-									next: nil,
-								},
-							},
-						},
-					},
-				},
+					data: 11, next: &SinglyLinkedListNode{
+						data: 9, next: &SinglyLinkedListNode{
+							data: 19, next: &SinglyLinkedListNode{
+								data: 10, next: &SinglyLinkedListNode{
+									data: 4, next: nil,
+								}}}}},
 				data:     20,
 				position: 3,
 			},
 			want: &SinglyLinkedListNode{
-				data: 11,
-				next: &SinglyLinkedListNode{
-					data: 9,
-					next: &SinglyLinkedListNode{
-						data: 19,
-						next: &SinglyLinkedListNode{
-							data: 20,
-							next: &SinglyLinkedListNode{
-								data: 10,
-								next: &SinglyLinkedListNode{
-									data: 4,
-									next: nil,
-								},
-							},
-						},
-					},
-				},
-			},
+				data: 11, next: &SinglyLinkedListNode{
+					data: 9, next: &SinglyLinkedListNode{
+						data: 19, next: &SinglyLinkedListNode{
+							data: 20, next: &SinglyLinkedListNode{
+								data: 10, next: &SinglyLinkedListNode{
+									data: 4, next: nil,
+								}}}}}},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := insertNodeAtPosition(tt.args.llist, tt.args.data, tt.args.position); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("insertNodeAtPosition() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_shiftNodePosition(t *testing.T) {
+	type args struct {
+		head  *SinglyLinkedListNode
+		shift int32
+	}
+	tests := []struct {
+		name string
+		args args
+		want *SinglyLinkedListNode
+	}{
+		{
+			name: "test 1",
+			args: args{
+				head: &SinglyLinkedListNode{
+					data: 1, next: &SinglyLinkedListNode{
+						data: 2, next: &SinglyLinkedListNode{
+							data: 3, next: &SinglyLinkedListNode{
+								data: 4, next: nil,
+							}}}},
+				shift: 10,
+			},
+			want: &SinglyLinkedListNode{
+				data: 3, next: &SinglyLinkedListNode{
+					data: 4, next: &SinglyLinkedListNode{
+						data: 1, next: &SinglyLinkedListNode{
+							data: 2, next: nil,
+						}}}},
+		}, {
+			name: "test 2",
+			args: args{
+				head:  nil,
+				shift: 10,
+			},
+			want: nil,
+		}, {
+			name: "test 3",
+			args: args{
+				head: &SinglyLinkedListNode{
+					data: 1, next: &SinglyLinkedListNode{
+						data: 2, next: &SinglyLinkedListNode{
+							data: 3, next: &SinglyLinkedListNode{
+								data: 4, next: nil,
+							}}}},
+				shift: 0,
+			},
+			want: &SinglyLinkedListNode{
+				data: 1, next: &SinglyLinkedListNode{
+					data: 2, next: &SinglyLinkedListNode{
+						data: 3, next: &SinglyLinkedListNode{
+							data: 4, next: nil,
+						}}}},
+		},{
+			name: "test 3",
+			args: args{
+				head: &SinglyLinkedListNode{
+					data: 1, next: &SinglyLinkedListNode{
+						data: 2, next: &SinglyLinkedListNode{
+							data: 3, next: nil,
+							}}},
+				shift: 10000,
+			},
+			want: &SinglyLinkedListNode{
+				data: 3, next: &SinglyLinkedListNode{
+					data: 1, next: &SinglyLinkedListNode{
+						data: 2, next: nil,
+						}}},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := shiftNodePosition(tt.args.head, tt.args.shift); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("shiftNodePosition() = %v, want %v", got, tt.want)
 			}
 		})
 	}
