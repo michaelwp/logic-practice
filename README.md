@@ -10,6 +10,7 @@
 4. Linked List
     - Print Linked List
     - Insert Node At Position
+    - Shift Node Position
 5. Number of Occurrences
 6. Palindrome
 7. Anagram

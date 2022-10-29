@@ -40,3 +40,39 @@ func insertNodeAtPosition(llist *SinglyLinkedListNode, data int32, position int3
 
 	return llist
 }
+
+func shiftNodePosition(head *SinglyLinkedListNode, shift int32) *SinglyLinkedListNode {
+
+	// if there's no node or no shifting than just return the original head
+	if shift == 0 || head == nil {
+		return head
+	}
+
+	// mapping the nodes
+	nodeMap := map[int32]*SinglyLinkedListNode{}
+	var count int32 = 1
+
+	for head.next != nil {
+		nodeMap[count] = head
+		head = head.next
+		count++
+	}
+	nodeMap[count] = head
+
+	// find the modulo between shift number and the length of the node
+	shift = shift % count
+
+	// if no shifting just return the original
+	if shift == 0 {
+		return head
+	}
+
+	// adjust the next node
+	nodeMap[count].next = nodeMap[1]
+	nodeMap[count-shift].next = nil
+
+	// change the head with the (length of the node - shift) + 1 node
+	head = nodeMap[(count-shift)+1]
+
+	return head
+}
