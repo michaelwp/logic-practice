@@ -293,3 +293,41 @@ func Test_deleteNode(t *testing.T) {
 		})
 	}
 }
+
+func Test_reverseNode(t *testing.T) {
+	type args struct {
+		llist *SinglyLinkedListNode
+	}
+	tests := []struct {
+		name string
+		args args
+		want *SinglyLinkedListNode
+	}{
+		{
+			name: "test 1",
+			args: args{llist: nil},
+			want: nil,
+		}, {
+			name: "test 2",
+			args: args{llist: &SinglyLinkedListNode{
+				data: 0, next: &SinglyLinkedListNode{
+					data: 1, next: &SinglyLinkedListNode{
+						data: 2, next: &SinglyLinkedListNode{
+							data: 3, next: nil,
+						}}}}},
+			want: &SinglyLinkedListNode{
+				data: 3, next: &SinglyLinkedListNode{
+					data: 2, next: &SinglyLinkedListNode{
+						data: 1, next: &SinglyLinkedListNode{
+							data: 0, next: nil,
+						}}}},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := reverseNode(tt.args.llist); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("reverseNode() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
