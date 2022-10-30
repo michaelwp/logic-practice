@@ -16,5 +16,6 @@
 6. Palindrome
 7. Anagram
    - isAnagram
+   - Sherlock & Anagram (how many anagram in a string)
 8. Matrix
    - Spiral Step
