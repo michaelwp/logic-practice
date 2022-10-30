@@ -50,3 +50,51 @@ func Test_isAnagram(t *testing.T) {
 		})
 	}
 }
+
+func Test_sherlockAndAnagrams(t *testing.T) {
+	type args struct {
+		s string
+	}
+	tests := []struct {
+		name string
+		args args
+		want int32
+	}{
+		{
+			name: "test 1",
+			args: args{s: "ifailuhkqq"},
+			want: 3,
+		},{
+			name: "test 2",
+			args: args{s: "kkkk"},
+			want: 10,
+		},{
+			name: "test 3",
+			args: args{s: "mom"},
+			want: 2,
+		},{
+			name: "test 4",
+			args: args{s: "abba"},
+			want: 4,
+		},{
+			name: "test 5",
+			args: args{s: "abcd"},
+			want: 0,
+		},{
+			name: "test 6",
+			args: args{s: "cdcd"},
+			want: 5,
+		},{
+			name: "test 7",
+			args: args{s: ""},
+			want: 0,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := sherlockAndAnagrams(tt.args.s); got != tt.want {
+				t.Errorf("sherlockAndAnagrams() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
