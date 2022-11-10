@@ -1,4 +1,4 @@
-package main
+package matrix
 
 import (
 	"reflect"
@@ -34,7 +34,7 @@ func Test_spiralStep(t *testing.T) {
 				{12},
 				{13},
 			},
-		},{
+		}, {
 			name: "spiral step test case 2 with 1 x 1 dimension",
 			args: args{matrix: [][]int32{
 				{1},
@@ -42,7 +42,7 @@ func Test_spiralStep(t *testing.T) {
 			want: [][]int32{
 				{1},
 			},
-		},{
+		}, {
 			name: "spiral step test case 3 with 5 x 2 dimension",
 			args: args{matrix: [][]int32{
 				{1, 2, 3, 4, 5},
@@ -53,11 +53,11 @@ func Test_spiralStep(t *testing.T) {
 				{10},
 				{9, 8, 7, 6},
 			},
-		},{
+		}, {
 			name: "spiral step test case 4 with nil value in parameter",
 			args: args{matrix: nil},
 			want: nil,
-		},{
+		}, {
 			name: "spiral step test case 5 with parameter length = 0",
 			args: args{matrix: [][]int32{}},
 			want: nil,
