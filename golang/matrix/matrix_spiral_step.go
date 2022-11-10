@@ -1,4 +1,4 @@
-package main
+package matrix
 
 type coord struct {
 	x, y int32

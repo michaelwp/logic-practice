@@ -1,4 +1,4 @@
-package main
+package matrix
 
 type pos struct {
 	x, y int
@@ -10,9 +10,9 @@ func minCostPath(cost [][]int) int {
 		y: len(cost) - 1,
 	}
 
-	horz := &pos{x: 0, y: 0}
-	vert := &pos{x: 0, y: 0}
-	diag := &pos{x: 0, y: 0}
+	horz := &pos{x: currPos.x, y: currPos.y}
+	vert := &pos{x: currPos.x, y: currPos.y}
+	diag := &pos{x: currPos.x, y: currPos.y}
 
 	minCostSum := cost[currPos.y][currPos.x] + cost[0][0]
 
