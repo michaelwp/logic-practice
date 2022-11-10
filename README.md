@@ -19,4 +19,5 @@
    - Sherlock & Anagram (how many anagram in a string)
 8. Matrix
    - Spiral Step
+   - Minimal Cost Path
 9. The nearest block
