@@ -21,3 +21,4 @@
    - Spiral Step
    - Minimal Cost Path
 9. The nearest block
+10. Prime Number
