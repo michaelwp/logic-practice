@@ -24,3 +24,4 @@
 10. Math
     - Prime Number
     - Common Divisors
+    - Minimum Difference

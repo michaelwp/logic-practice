@@ -1,9 +1,10 @@
 package main
 
+import "fmt"
+
 func main() {
-	// LOGIC TEST CODED BY : Michael W. P.
-	// 1. Find number of occurrences
-	// 2. Find number of a pair of sum X
+	var a = []int{0, 1, 1, 0, 0, 1}
+	var b = []int{10, 2, 3, 1, 7, 18}
+
+	fmt.Println(MinDifference(a, b))
 }
-
-
